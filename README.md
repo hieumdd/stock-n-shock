@@ -10,13 +10,13 @@ Fetch all zip files on Cafef.vn, ETL to SQLite
 Fetch today's zip files, ETL to SQLite using 'append'
 
 ## ML Model
-<to be added>
+to be added
 
 ## Up-to-date ML Pipeline
-<to be added>
+to be added
 
 ## Streamlit App
-<to be added>
+to be added
 
 ## Decision Recommendation System
-<to be added>
+to be added
