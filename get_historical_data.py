@@ -23,8 +23,6 @@ args = parser.parse_args()
 start_date = args.start
 end_date = args.end
 
-print(start_date)
-print(end_date)
 def get_all_csv(url):
     with requests.get(url) as r:
         z = zipfile.ZipFile(io.BytesIO(r.content))
