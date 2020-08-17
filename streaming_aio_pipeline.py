@@ -15,13 +15,21 @@ import re
 from datetime import datetime
 from tqdm import tqdm
 import logging
+import argparse
 
 
 # In[42]:
 
 
 logging.basicConfig(filename='bad_date.log', level=logging.INFO)
+parser = argparse.ArgumentParser()
 
+parser.add_argument('-s', '--start',
+                    type=str,
+                    help='Start Date')
+
+args = parser.parse_args()
+start_date = args.start
 
 # In[2]:
 
@@ -64,7 +72,15 @@ date_2 = to_2nd_date_ranges(today)
 # In[17]:
 
 
-url = base_url.format(date_1, date_2)
+if start_date == None:
+    date_1 = to_1st_date_ranges(datetime.now())
+    date_2 = to_2nd_date_ranges(datetime.now())
+    url = base_url.format(date_1, date_2)
+else:
+    date_1 = to_1st_date_ranges(datetime.strptime(start_date, '%Y-%m-%d'))
+    date_2 = to_2nd_date_ranges(datetime.strptime(start_date, '%Y-%m-%d'))
+    url = base_url.format(date_1, date_2)
+
 print(url)
 try:
     get_all_csv(url)
